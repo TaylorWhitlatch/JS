@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fight the horrible clown</title>
+
+	<style type="text/css" media="screen">
+		html {
+			cursor: url(gun.png), pointer;
+		}
+	
+		body{
+			text-align: center;
+			background-image: url("background.jpg");
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: center;
+			
+			
+ 			
+			/* background-size: cover; */
+
+
+		}
+
+		#game-wrapper {
+			bottom: 0px;
+			
+		/* 	display: inline-block; */
+		}
+		button {
+			background-image: url("gun.png");
+			cursor: url(gun.png), pointer;
+		}
+	
+	</style>
+
+	<script type="text/javascript">
+		var game = true;
+var diceRoll = 5;
+		var health = 3;
+
+		function rollDice(){
+			// console.log("User pressed the roll button!");
+			// get a random number between 1 and 6 for both dice.
+			var rand1 = Math.ceil(Math.random() * 6);
+			var rand2 = Math.ceil(Math.random() * 6);
+			
+			// The dice images are dN.gif. We have 2 random numbers for that N.
+			// Use JS to update the DOM, so that the image files that show, will
+			// be teh same number as the random numbers above.
+			var dice = document.getElementById('dice')
+			console.dir(dice);
+			var image1 = dice.children[0];
+			var image2 = dice.children[1];
+			image1.src = `clown-assets/d${rand1}.gif`;
+			image2.src = `clown-assets/d${rand2}.gif`;
+
+			if(rand1 + rand2 > 8){
+				// document.getElementById('dragon').children[0].src = "https://media.giphy.com/media/2gtoSIzdrSMFO/giphy.gif";
+				// document.getElementById('dragon').children[0].style.height = "200px"
+				// document.getElementById('dragon').children[0].style.width = "300px"
+				health --;
+				
+				}
+
+			else {
+
+				diceRoll --;
+				alert("He hit you!!! Your health is " + diceRoll)
+			}
+
+
+			
+			if (health == 2){
+			alert("You hit him!!! His health is " + health)
+				
+}	
+			if (health == 1){
+				alert("Hit him one more time!  His health is " + health)
+			}
+
+			if (diceRoll == 0){
+				document.getElementById('message').innerHTML = "<strong>You</strong> lost!";
+				document.getElementById('dragon').children[0].src = "https://media.giphy.com/media/yX8PN7T58DqQo/giphy.gif";
+
+			}
+
+				if (health == 0){
+				document.getElementById('message').innerHTML = "<strong>You</strong> have defeated the clown!";
+				document.getElementById('dragon').children[0].src = "https://media.giphy.com/media/2gtoSIzdrSMFO/giphy.gif";
+				// document.getElementById('dragon').children[0].style.height = "200px"
+				// document.getElementById('dragon').children[0].style.width = "300px"
+			}
+
+		}
+
+
+
+	</script>
+
+</head>
+<body>
+	
+	<div id="game-wrapper">
+		<div id="clown">
+			<img src="./clown-assets/clown.gif" onmousedown="rollDice()" />
+		</div>
+		<div id="message">
+			<p>
+				You have encounted the great and terrible clown. Roll to fight. You must roll an 8 or higher to defeat it.
+			</p>
+			<progress id="myBar"></progress>
+		</div>
+		<div id="dice">
+			<img src="./clown-assets/d1.gif" />
+			<img src="./clown-assets/d1.gif" />
+		</div>
+		<div id="roll">
+<!-- 			<button onclick="rollDice();" img src="gun.png">Fight!</button>
+ -->		</div>
+	</div>
+
+</body>
+</html>
