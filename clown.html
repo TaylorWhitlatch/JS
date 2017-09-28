@@ -69,6 +69,11 @@ var diceRoll = 5;
 				alert("He hit you!!! Your health is " + diceRoll)
 			}
 
+if (diceRoll == 0){
+				document.getElementById('message').innerHTML = "<strong>You</strong> lost!";
+				document.getElementById('clown').children[0].src = "http://gph.is/1XYua70";
+
+			}
 
 			
 			if (health == 2){
@@ -80,16 +85,21 @@ var diceRoll = 5;
 			}
 
 			if (diceRoll == 0){
-				document.getElementById('message').innerHTML = "<strong>You</strong> lost!";
-				document.getElementById('dragon').children[0].src = "https://media.giphy.com/media/yX8PN7T58DqQo/giphy.gif";
+				document.getElementById('message').innerHTML = "<strong>You</strong> have defeated the clown!";
+				document.getElementById('clown').children[0].src = "https://media.giphy.com/media/yX8PN7T58DqQo/giphy.gif";
 
 			}
 
 				if (health == 0){
 				document.getElementById('message').innerHTML = "<strong>You</strong> have defeated the clown!";
-				document.getElementById('dragon').children[0].src = "https://media.giphy.com/media/2gtoSIzdrSMFO/giphy.gif";
+				document.getElementById('clown').children[0].src = "https://media.giphy.com/media/2gtoSIzdrSMFO/giphy.gif";
 				// document.getElementById('dragon').children[0].style.height = "200px"
 				// document.getElementById('dragon').children[0].style.width = "300px"
+			}
+			if (diceRoll == 0){
+				document.getElementById('message').innerHTML = "<strong>You</strong> have Lost!";
+				document.getElementById('clown').children[0].src = "https://m.popkey.co/495dde/zJr9E_f-maxage-0.gif";
+
 			}
 
 		}
